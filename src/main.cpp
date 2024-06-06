@@ -2,7 +2,7 @@
 #include <SFML/Window/Keyboard.hpp>
 #include <iostream>
 
-void    moveCircle( sf::CircleShape& circle, float delta, sf::Keyboard::Key key) {
+void    moveCircle( sf::CircleShape& circle, float delta) {
 
     sf::Vector2 speed(400,400);
     sf::Vector2 position(0.0f, 0.0f);
@@ -14,14 +14,14 @@ void    moveCircle( sf::CircleShape& circle, float delta, sf::Keyboard::Key key)
         position.y  -= speed.y * delta;
     }
     // }
-    if (key == sf::Keyboard::W) {
-        // std::cout << "Circle should move" << std::endl;//
-        position.y  -= speed.y * delta;
-    }
-    if (key == sf::Keyboard::S) {
-        position.y  += speed.y * delta;
-        // std::cout << "Circle should move" << std::endl;//
-    }
+//    if (key == sf::Keyboard::W) {
+//        // std::cout << "Circle should move" << std::endl;//
+//        position.y  -= speed.y * delta;
+//    }
+//    if (key == sf::Keyboard::S) {
+//        position.y  += speed.y * delta;
+//        // std::cout << "Circle should move" << std::endl;//
+//    }
     // position.x += circle.getPosition().x;
     // position.y += circle.getPosition().y;
     // circle.setPosition(position);
@@ -50,15 +50,16 @@ int main()
             {
                 window.close();
             }
-            else if (event.type == sf::Event::KeyPressed || event.type == sf::Event::KeyReleased) {
-                std::cout << "Key was pressed!" << std::endl;
-                if (event.key.code == sf::Keyboard::W) 
-                    std::cout << "W!" << std::endl;
-                if (event.key.code == sf::Keyboard::S) 
-                    std::cout << "S!" << std::endl;
-                moveCircle(circle, delta_time, event.key.code);
-            }
+//            else if (event.type == sf::Event::KeyPressed || event.type == sf::Event::KeyReleased) {
+//                std::cout << "Key was pressed!" << std::endl;
+//                if (event.key.code == sf::Keyboard::W)
+//                    std::cout << "W!" << std::endl;
+//                if (event.key.code == sf::Keyboard::S)
+//                    std::cout << "S!" << std::endl;
+//
+//            }
         }
+        moveCircle(circle, delta_time);
         window.clear();
         window.draw(circle);
         window.display();
